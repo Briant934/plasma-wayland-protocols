@@ -11,7 +11,7 @@
     SPDX-License-Identifier: MIT-CMU
     ]]></copyright>
 
-<interface name="kde_output_management_v2" version="9">
+<interface name="kde_output_management_v2" version="10">
   <description summary="configuration of server outputs through clients">
     This interface enables clients to set properties of output devices for screen
     configuration purposes via the server. To this end output devices are referenced
@@ -63,7 +63,7 @@
 
 </interface>
 
-<interface name="kde_output_configuration_v2" version="9">
+<interface name="kde_output_configuration_v2" version="10">
   <description summary="configure single output devices">
     outputconfiguration is a client-specific resource that can be used to ask
     the server to apply changes to available output devices.
@@ -303,6 +303,17 @@
     </description>
     <arg name="outputdevice" type="object" interface="kde_output_device_v2" summary="outputdevice this setting applies to"/>
     <arg name="brightness" type="uint" summary="brightness in 0-10000"/>
+  </request>
+
+  <request name="set_allow_color_power_saving" since="10">
+    <description summary="allow color power saving">
+      Some hardware has features where it can change the colors on the
+      screen to save power - at the cost of color accuracy.
+      This setting controls whether or not the driver is allowed to use
+      this feature.
+    </description>
+    <arg name="outputdevice" type="object" interface="kde_output_device_v2" summary="outputdevice this setting applies to"/>
+    <arg name="allow" type="uint" summary="1 if allowed, 0 if not"/>
   </request>
 </interface>
 </protocol>
